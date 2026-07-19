@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Details | Ghalchen Editing</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+background:#0a0a0a;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:30px;
+}
+
+.container{
+width:100%;
+max-width:700px;
+background:#151515;
+padding:40px;
+border-radius:20px;
+box-shadow:0 0 30px rgba(255,215,0,.15);
+}
+
+h1{
+text-align:center;
+color:#FFD700;
+margin-bottom:25px;
+}
+
+.selected{
+background:#222;
+padding:15px;
+border-radius:10px;
+margin-bottom:25px;
+text-align:center;
+font-size:18px;
+}
+
+label{
+display:block;
+margin-top:18px;
+margin-bottom:8px;
+font-weight:600;
+}
+
+input,select,textarea{
+width:100%;
+padding:14px;
+background:#222;
+border:1px solid #333;
+border-radius:10px;
+color:white;
+font-size:15px;
+}
+
+textarea{
+height:120px;
+resize:none;
+}
+
+button{
+margin-top:30px;
+width:100%;
+padding:16px;
+background:#FFD700;
+border:none;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.03);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Order Details</h1>
+
+<div class="selected">
+<b>Selected Plan:</b><br>
+<span id="plan"></span><br>
+<span id="price"></span>
+</div>
+
+<label>Full Name</label>
+<input id="name" type="text">
+
+<label>WhatsApp Number</label>
+<input id="phone" type="text">
+
+<label>Email (Optional)</label>
+<input id="email" type="email">
+
+<label>YouTube / Instagram (LINK)</label>
+<input id="channel" type="text">
+
+<label>Video Type</label>
+
+<select id="type">
+<option>Gaming</option>
+<option>Vlog</option>
+<option>AMV</option>
+<option>Documentary</option>
+<option>Reel</option>
+<option>Other</option>
+</select>
+
+<label>Google Drive Link</label>
+<input id="drive" type="text">
+
+<label>Special Instructions</label>
+<textarea id="note"></textarea>
+
+<label>Delivery Speed</label>
+
+<select id="delivery">
+<option>Normal</option>
+<option>Fast (+₹500)</option>
+<option>Urgent (+₹1000)</option>
+</select>
+
+<button onclick="nextPage()">
+Continue To Payment →
+</button>
+
+</div>
+
+<script>
+
+document.getElementById("plan").innerHTML=localStorage.getItem("plan");
+document.getElementById("price").innerHTML="₹"+localStorage.getItem("price");
+
+function nextPage(){
+
+localStorage.setItem("name",document.getElementById("name").value);
+localStorage.setItem("phone",document.getElementById("phone").value);
+localStorage.setItem("email",document.getElementById("email").value);
+localStorage.setItem("channel",document.getElementById("channel").value);
+localStorage.setItem("type",document.getElementById("type").value);
+localStorage.setItem("drive",document.getElementById("drive").value);
+localStorage.setItem("note",document.getElementById("note").value);
+localStorage.setItem("delivery",document.getElementById("delivery").value);
+
+window.location="payment.html";
+
+}
+
+</script>
+
+</body>
+</html>
