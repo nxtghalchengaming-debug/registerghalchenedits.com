@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Complete Payment | Ghalchen Editing</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+
+background:linear-gradient(135deg,#050505,#101010,#050505);
+
+color:white;
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:40px;
+
+overflow-x:hidden;
+
+animation:bg 10s linear infinite;
+
+}
+
+@keyframes bg{
+
+0%{background-position:left;}
+100%{background-position:right;}
+
+}
+
+.container{
+
+width:100%;
+max-width:850px;
+
+background:rgba(20,20,20,.75);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,215,0,.15);
+
+border-radius:25px;
+
+padding:40px;
+
+box-shadow:0 0 40px rgba(255,215,0,.15);
+
+animation:pop .8s ease;
+
+}
+
+@keyframes pop{
+
+from{
+
+opacity:0;
+transform:translateY(40px) scale(.95);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0) scale(1);
+
+}
+
+}
+
+.logo{
+
+text-align:center;
+
+font-size:34px;
+
+font-weight:700;
+
+color:#FFD700;
+
+margin-bottom:10px;
+
+}
+
+.subtitle{
+
+text-align:center;
+
+color:#bbb;
+
+margin-bottom:35px;
+
+}
+
+.summary{
+
+background:#1a1a1a;
+
+border-radius:15px;
+
+padding:20px;
+
+margin-bottom:30px;
+
+border:1px solid rgba(255,215,0,.15);
+
+}
+
+.summary h2{
+
+color:#FFD700;
+
+margin-bottom:15px;
+
+}
+
+.row{
+
+display:flex;
+
+justify-content:space-between;
+
+padding:10px 0;
+
+border-bottom:1px solid #2b2b2b;
+
+}
+
+.row:last-child{
+
+border:none;
+
+}
+
+.left{
+
+color:#999;
+
+}
+
+.right{
+
+font-weight:600;
+
+}
+
+.payment{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:30px;
+
+}
+
+.box{
+
+background:#1a1a1a;
+
+border-radius:15px;
+
+padding:25px;
+
+border:1px solid rgba(255,215,0,.15);
+
+}
+
+.box h3{
+
+color:#FFD700;
+
+margin-bottom:15px;
+
+}
+
+.qr{
+
+width:100%;
+
+border-radius:12px;
+
+background:white;
+
+padding:10px;
+
+}
+
+.upi{
+
+background:#222;
+
+padding:15px;
+
+border-radius:10px;
+
+margin-top:20px;
+
+font-weight:bold;
+
+text-align:center;
+
+word-break:break-all;
+
+}
+
+.copy{
+
+margin-top:15px;
+
+width:100%;
+
+padding:14px;
+
+background:#FFD700;
+
+border:none;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-weight:bold;
+
+transition:.3s;
+
+}
+
+.copy:hover{
+
+transform:scale(1.03);
+
+}
+
+input[type=file]{
+
+margin-top:15px;
+
+width:100%;
+
+padding:12px;
+
+background:#222;
+
+border-radius:10px;
+
+color:white;
+
+}
+
+.note{
+
+margin-top:15px;
+
+color:#bbb;
+
+font-size:14px;
+
+line-height:1.6;
+
+}
+
+.send{
+
+margin-top:35px;
+
+width:100%;
+
+padding:18px;
+
+border:none;
+
+border-radius:12px;
+
+background:#FFD700;
+
+font-size:19px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.send:hover{
+
+transform:scale(1.03);
+
+box-shadow:0 0 25px rgba(255,215,0,.4);
+
+}
+
+@media(max-width:800px){
+
+.payment{
+
+grid-template-columns:1fr;
+
+}
+
+.container{
+
+padding:25px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="logo">
+
+GHALCHEN EDITING
+
+</div>
+
+<div class="subtitle">
+
+Complete your payment to confirm your order.
+
+</div>
+
+<div class="summary">
+
+<h2>Order Summary</h2>
+
+<div class="row">
+
+<div class="left">Selected Plan</div>
+
+<div class="right" id="plan"></div>
+
+</div>
+
+<div class="row">
+
+<div class="left">Amount</div>
+
+<div class="right" id="price"></div>
+
+</div>
+
+</div>
+
+<div class="payment">
+
+<div class="box">
+
+<h3>Scan & Pay</h3>
+
+<img src="qr.png" class="qr">
+
+<div class="upi" id="upi">
+
+ghalchentrooboyz43-1@oksbi
+
+</div>
+
+<button class="copy" onclick="copyUPI()">
+
+Copy UPI ID
+
+</button>
+
+</div>
+
+<div class="box">
+
+<h3>Upload Payment Screenshot</h3>
+
+<input type="file" id="paymentImage" accept="image/*">
+
+<p class="note">
+
+Upload your payment screenshot for your own record.
+
+When WhatsApp opens, attach this screenshot before sending your message.
+
+</p>
+
+</div>
+
+</div>
+
+<button class="send" onclick="sendOrder()">
+
+✅ I've Sent the Payment
+
+</button>
+
+<script>
+
+document.getElementById("plan").innerHTML =
+localStorage.getItem("plan") || "Not Selected";
+
+document.getElementById("price").innerHTML =
+"₹" + (localStorage.getItem("price") || "0");
+
+function copyUPI(){
+
+navigator.clipboard.writeText("ghalchentrooboyz43-1@oksbi");
+
+alert("UPI ID copied successfully!");
+
+}
+
+function sendOrder(){
+
+const image =
+document.getElementById("paymentImage").files[0];
+
+let imageText="";
+
+if(image){
+
+imageText=
+"\n📷 Payment Screenshot:\nAttached separately in WhatsApp.";
+
+}else{
+
+imageText=
+"\n⚠ No payment screenshot selected yet.";
+
+}
+
+const message=
+
+`🎬 *NEW EDIT ORDER*
+
+━━━━━━━━━━━━━━━━━━
+
+👤 Name:
+${localStorage.getItem("name")}
+
+📱 WhatsApp:
+${localStorage.getItem("phone")}
+
+📧 Email:
+${localStorage.getItem("email")}
+
+━━━━━━━━━━━━━━━━━━
+
+🎥 Plan:
+${localStorage.getItem("plan")}
+
+💰 Price:
+₹${localStorage.getItem("price")}
+
+🎮 Video Type:
+${localStorage.getItem("type")}
+
+⚡ Delivery:
+${localStorage.getItem("delivery")}
+
+━━━━━━━━━━━━━━━━━━
+
+📺 Channel:
+${localStorage.getItem("channel")}
+
+📂 Google Drive:
+${localStorage.getItem("drive")}
+
+━━━━━━━━━━━━━━━━━━
+
+📝 Instructions:
+
+${localStorage.getItem("note")}
+
+━━━━━━━━━━━━━━━━━━
+
+✅ PAYMENT COMPLETED
+
+${imageText}
+
+Please attach the payment screenshot in this chat before sending.
+
+Thank you!`;
+
+window.open(
+
+"https://wa.me/919609876688?text=" +
+encodeURIComponent(message),
+
+"_blank"
+
+);
+
+}
+
+</script>
+
+</body>
+</html>
