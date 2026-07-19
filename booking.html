@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choose Your Plan | Ghalchen Editing</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0b0b0b;
+color:white;
+}
+
+header{
+padding:25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#111;
+border-bottom:1px solid #333;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+color:#FFD700;
+}
+
+.back{
+color:white;
+text-decoration:none;
+}
+
+.hero{
+text-align:center;
+padding:60px 20px;
+}
+
+.hero h1{
+font-size:48px;
+color:#FFD700;
+margin-bottom:15px;
+}
+
+.hero p{
+color:#bbb;
+}
+
+.cards{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+
+padding:60px;
+}
+
+.card{
+
+background:#171717;
+border-radius:18px;
+padding:35px;
+transition:.35s;
+border:1px solid #2d2d2d;
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+border-color:#FFD700;
+
+}
+
+.plan{
+
+font-size:28px;
+font-weight:bold;
+margin-bottom:10px;
+
+}
+
+.price{
+
+font-size:34px;
+font-weight:bold;
+color:#FFD700;
+margin:20px 0;
+
+}
+
+ul{
+
+list-style:none;
+margin-bottom:30px;
+
+}
+
+ul li{
+
+margin:12px 0;
+color:#ddd;
+
+}
+
+button{
+
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+background:#FFD700;
+color:black;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:scale(1.03);
+
+}
+
+footer{
+
+text-align:center;
+padding:40px;
+color:#888;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+GHALCHEN EDITING
+</div>
+
+<a href="index.html" class="back">
+← Home
+</a>
+
+</header>
+
+<section class="hero">
+
+<h1>Choose Your Editing Plan</h1>
+
+<p>Select the package that best suits your project.</p>
+
+</section>
+
+<section class="cards">
+
+<div class="card">
+
+<div class="plan">🔥 Basic Plan</div>
+
+<div class="price">₹100 - ₹1000</div>
+
+<ul>
+
+<li>✔ Shorts</li>
+<li>✔ Instagram Reels</li>
+<li>✔ YouTube Shorts</li>
+<li>✔ Basic Effects</li>
+<li>✔ HD Export</li>
+
+</ul>
+
+<button onclick="choose('Basic Plan','100-1000')">
+Choose Plan
+</button>
+
+</div>
+
+<div class="card">
+
+<div class="plan">⭐ Standard</div>
+
+<div class="price">₹1000 - ₹2000</div>
+
+<ul>
+
+<li>✔ 10 Minute Video</li>
+<li>✔ Subtitles</li>
+<li>✔ Motion Graphics</li>
+<li>✔ Sound Design</li>
+
+</ul>
+
+<button onclick="choose('Standard','1000-2000')">
+Choose Plan
+</button>
+
+</div>
+
+<div class="card">
+
+<div class="plan">💎 Premium</div>
+
+<div class="price">₹2000 - ₹3000</div>
+
+<ul>
+
+<li>✔ 15 Minute Video</li>
+<li>✔ Cinematic Color Grade</li>
+<li>✔ Advanced Effects</li>
+<li>✔ Motion Tracking</li>
+
+</ul>
+
+<button onclick="choose('Premium','2000-3000')">
+Choose Plan
+</button>
+
+</div>
+
+<div class="card">
+
+<div class="plan">👑 Pro</div>
+
+<div class="price">₹3000+</div>
+
+<ul>
+
+<li>✔ 30 Minute Video</li>
+<li>✔ Professional Editing</li>
+<li>✔ Premium Motion Graphics</li>
+<li>✔ Thumbnail Included</li>
+
+</ul>
+
+<button onclick="choose('Pro','3000+')">
+Choose Plan
+</button>
+
+</div>
+
+<div class="card">
+
+<div class="plan">🚀 Ultimate</div>
+
+<div class="price">₹10,000</div>
+
+<ul>
+
+<li>✔ 1 Hour Video</li>
+<li>✔ Everything Included</li>
+<li>✔ 4K Export</li>
+<li>✔ Premium Color Grading</li>
+
+</ul>
+
+<button onclick="choose('Ultimate','10000')">
+Choose Plan
+</button>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 Ghalchen Editing
+
+</footer>
+
+<script>
+
+function choose(plan,price){
+
+localStorage.setItem("plan",plan);
+localStorage.setItem("price",price);
+
+window.location.href="order.html";
+
+}
+
+</script>
+
+</body>
+</html>
